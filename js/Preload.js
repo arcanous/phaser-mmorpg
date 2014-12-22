@@ -22,7 +22,8 @@ TopDownGame.Preload.prototype = {
     this.load.image('gameTiles', '/assets/tilemaps/desert/tmw_desert_spacing.png');
     this.load.image('greencup', '/assets/images/greencup.png');
     this.load.image('bluecup', '/assets/images/bluecup.png');
-    this.load.image('player', '/assets/images/player.png');
+    //this.load.image('player', '/assets/images/player.png');
+    this.load.spritesheet('playerDude', '/assets/images/dude.png', 32, 48);
     this.load.image('browndoor', '/assets/images/browndoor.png');
     
     this.game.load.onFileComplete.add(this.onFileCompleteCallback, this);
