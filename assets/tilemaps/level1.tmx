@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="10" height="20" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16">
+  <image source="../images/tiles.png" width="705" height="1280"/>
+ </tileset>
+ <tileset firstgid="3521" name="tiles" tilewidth="16" tileheight="16">
+  <image source="../images/tiles.png" width="705" height="1280"/>
+ </tileset>
+ <layer name="backgroundLayer" width="10" height="20">
+  <data encoding="csv">
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50,
+50,50,50,50,50,50,50,50,50,50
+</data>
+ </layer>
+ <layer name="blockedLayer" width="10" height="20">
+  <data encoding="csv">
+1896,1896,1896,1896,1896,1896,1896,1896,1896,1896,
+1896,0,0,0,0,1896,1896,1896,1896,1896,
+1896,0,0,0,0,0,0,1896,1896,1896,
+1896,0,0,222,0,0,0,0,1896,1896,
+222,0,0,222,0,0,0,0,0,222,
+222,0,0,222,1632,1632,1632,0,0,222,
+222,0,0,222,0,0,0,0,0,222,
+222,0,0,222,0,0,0,0,0,222,
+222,0,0,222,0,0,0,0,0,222,
+222,0,0,222,0,0,0,0,0,222,
+222,0,0,222,222,222,222,222,222,222,
+222,0,0,0,0,0,0,0,0,222,
+222,0,0,0,0,0,0,0,0,222,
+222,0,0,0,0,0,0,0,0,222,
+222,222,222,222,1721,1721,1721,0,0,222,
+222,0,0,0,0,0,0,0,0,222,
+222,0,0,0,0,0,0,0,0,222,
+222,0,0,0,0,0,0,0,0,222,
+222,0,0,0,0,0,0,0,1896,222,
+222,222,222,222,222,222,222,222,222,222
+</data>
+ </layer>
+ <objectgroup name="objectsLayer" width="10" height="20">
+  <object gid="1216" x="86" y="69">
+   <properties>
+    <property name="sprite" value="bluecup"/>
+    <property name="type" value="item"/>
+   </properties>
+  </object>
+  <object gid="1260" x="114" y="207">
+   <properties>
+    <property name="sprite" value="greencup"/>
+    <property name="type" value="item"/>
+   </properties>
+  </object>
+  <object gid="71" x="33" y="292">
+   <properties>
+    <property name="type" value="playerStart"/>
+   </properties>
+  </object>
+  <object gid="441" x="108" y="148">
+   <properties>
+    <property name="sprite" value="browndoor"/>
+    <property name="targetTilemap" value="level2"/>
+    <property name="targetX" value="20"/>
+    <property name="targetY" value="30"/>
+    <property name="type" value="door"/>
+   </properties>
+  </object>
+  <object gid="1216" x="28" y="203">
+   <properties>
+    <property name="sprite" value="bluecup"/>
+    <property name="type" value="item"/>
+   </properties>
+  </object>
+  <object gid="1216" x="57" y="269">
+   <properties>
+    <property name="sprite" value="bluecup"/>
+    <property name="type" value="item"/>
+   </properties>
+  </object>
+  <object gid="1216" x="116" y="263">
+   <properties>
+    <property name="sprite" value="bluecup"/>
+    <property name="type" value="item"/>
+   </properties>
+  </object>
+  <object gid="1260" x="72" y="129">
+   <properties>
+    <property name="sprite" value="greencup"/>
+    <property name="type" value="item"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
