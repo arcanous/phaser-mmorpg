@@ -90,16 +90,16 @@ TopDownGame.Game.prototype = {
     this.player.body.velocity.x = 0;
 
     if(this.cursors.up.isDown) {
-      this.player.body.velocity.y -= 50;
+      this.player.body.velocity.y -= 500;
     }
     else if(this.cursors.down.isDown) {
-      this.player.body.velocity.y += 50;
+      this.player.body.velocity.y += 500;
     }
     if(this.cursors.left.isDown) {
-      this.player.body.velocity.x -= 50;
+      this.player.body.velocity.x -= 500;
     }
     else if(this.cursors.right.isDown) {
-      this.player.body.velocity.x += 50;
+      this.player.body.velocity.x += 500;
     }
   },
   collect: function(player, collectable) {
