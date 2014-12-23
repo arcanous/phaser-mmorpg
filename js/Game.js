@@ -46,6 +46,7 @@ PhaserMMORPG.Game.prototype = {
 
     //move player with cursor keys
     this.cursors = this.game.input.keyboard.createCursorKeys();
+    this.escapeKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
 
   },
   createItems: function() {
@@ -119,6 +120,11 @@ PhaserMMORPG.Game.prototype = {
       this.player.play('right');
     } else {
       this.player.animations.stop();
+    }
+
+
+    if (this.escapeKey.isDown) {
+        this.state.start('MainMenu');
     }
 
   },
