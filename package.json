@@ -1,0 +1,21 @@
+{
+  "name": "phaser-mmorpg",
+  "version": "0.0.0",
+  "description": "A 2d tile-based world built with Phaser framework. Eventually intended to be made multiplayer",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arcanous/phaser-mmorpg.git"
+  },
+  "keywords": [
+    "mmorpg"
+  ],
+  "author": "Harijs Deksnis",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/arcanous/phaser-mmorpg/issues"
+  }
+}
