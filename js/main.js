@@ -1,10 +1,10 @@
-var TopDownGame = TopDownGame || {};
+var PhaserMMORPG = PhaserMMORPG || {};
 
-TopDownGame.game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, '');
+PhaserMMORPG.game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, '');
 
-TopDownGame.game.state.add('Boot', TopDownGame.Boot);
-TopDownGame.game.state.add('Preload', TopDownGame.Preload);
-TopDownGame.game.state.add('MainMenu', TopDownGame.MainMenu);
-TopDownGame.game.state.add('Game', TopDownGame.Game);
+PhaserMMORPG.game.state.add('Boot', PhaserMMORPG.Boot);
+PhaserMMORPG.game.state.add('Preload', PhaserMMORPG.Preload);
+PhaserMMORPG.game.state.add('MainMenu', PhaserMMORPG.MainMenu);
+PhaserMMORPG.game.state.add('Game', PhaserMMORPG.Game);
 
-TopDownGame.game.state.start('Boot');
+PhaserMMORPG.game.state.start('Boot');

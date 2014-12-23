@@ -1,9 +1,9 @@
-var TopDownGame = TopDownGame || {};
+var PhaserMMORPG = PhaserMMORPG || {};
 
 //title screen
-TopDownGame.MainMenu = function(){};
+PhaserMMORPG.MainMenu = function(){};
 
-TopDownGame.MainMenu.prototype = {
+PhaserMMORPG.MainMenu.prototype = {
   init: function(score) {
 
    },

@@ -1,9 +1,9 @@
-var TopDownGame = TopDownGame || {};
+var PhaserMMORPG = PhaserMMORPG || {};
 
-TopDownGame.Boot = function(){};
+PhaserMMORPG.Boot = function(){};
 
 //setting game configuration and loading the assets for the loading screen
-TopDownGame.Boot.prototype = {
+PhaserMMORPG.Boot.prototype = {
   preload: function() {
     //assets we'll use in the loading screen
     this.load.image('preloadbar', 'assets/images/preloader-bar.png');

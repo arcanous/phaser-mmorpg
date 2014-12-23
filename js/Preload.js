@@ -1,9 +1,9 @@
-var TopDownGame = TopDownGame || {};
+var PhaserMMORPG = PhaserMMORPG || {};
 
 //loading the game assets
-TopDownGame.Preload = function(){};
+PhaserMMORPG.Preload = function(){};
 
-TopDownGame.Preload.prototype = {
+PhaserMMORPG.Preload.prototype = {
   preload: function() {
     //show loading screen
     this.preloadBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'preloadbar');
