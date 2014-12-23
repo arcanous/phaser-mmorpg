@@ -22,12 +22,13 @@ PhaserMMORPG.MainMenu.prototype = {
 
 
     this.menuMusic = this.game.add.audio('spaceTheme',1,true);
-    this.menuMusic.play('',0,.5,true);
+    this.menuMusic.play('',0,.2,false);
 
   },
   update: function() {
     if(this.game.input.activePointer.justPressed()) {
-      this.game.state.start('Game');
+      this.game.state.start('Game', true, false, 'desert');
+      this.menuMusic.stop();
     }
   }
 };

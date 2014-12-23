@@ -9,7 +9,7 @@ PhaserMMORPG.Boot.prototype = {
     this.load.image('preloadbar', 'assets/images/preloader-bar.png');
   },
   create: function() {
-    //loading screen will have a white background
+    //setting loading screen background
     this.game.stage.backgroundColor = '#000';
 
     //scaling options
@@ -22,7 +22,7 @@ PhaserMMORPG.Boot.prototype = {
     //screen size will be set automatically
     this.scale.setScreenSize(true);
 
-    //physics system
+    //enable physics system
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
     
     this.state.start('Preload');

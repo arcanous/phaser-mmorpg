@@ -4,9 +4,13 @@ var PhaserMMORPG = PhaserMMORPG || {};
 PhaserMMORPG.Game = function(){};
 
 PhaserMMORPG.Game.prototype = {
+  init: function (levelName) {
+      this.levelName = levelName || 'desert';
+
+  },
   create: function() {
     
-    this.map = this.game.add.tilemap('level1');
+    this.map = this.game.add.tilemap(this.levelName);
 
     //the first parameter is the tileset name as specified in Tiled, the second is the key to the asset
     this.map.addTilesetImage('Desert', 'gameTiles');
