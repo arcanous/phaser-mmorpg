@@ -5,6 +5,12 @@ TopDownGame.Game = function(){};
 
 TopDownGame.Game.prototype = {
   create: function() {
+    
+    
+    console.log(TopDownGame);
+    //TopDownGame.MainMenu.menuMusic.stop();
+
+
     this.map = this.game.add.tilemap('level1');
 
     //the first parameter is the tileset name as specified in Tiled, the second is the key to the asset

@@ -20,17 +20,23 @@ TopDownGame.Preload.prototype = {
     //load game assets
     this.load.tilemap('level1', '/assets/tilemaps/desert/desert.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.image('gameTiles', '/assets/tilemaps/desert/tmw_desert_spacing.png');
+
+    this.load.image('space', '/assets/images/space.png');
     this.load.image('greencup', '/assets/images/greencup.png');
     this.load.image('bluecup', '/assets/images/bluecup.png');
-    //this.load.image('player', '/assets/images/player.png');
-    this.load.spritesheet('playerDude', '/assets/images/dude.png', 32, 48);
     this.load.image('browndoor', '/assets/images/browndoor.png');
+
+    this.load.spritesheet('playerDude', '/assets/images/dude.png', 32, 48);
+
+
+    this.load.audio('spaceTheme', '/assets/audio/space-theme.mp3');
+
     
     this.game.load.onFileComplete.add(this.onFileCompleteCallback, this);
 
   },
   create: function() {
-    this.state.start('Game');
+    this.state.start('MainMenu');
   },
   
 
