@@ -42,9 +42,16 @@ PhaserMMORPG.Preload.prototype = {
 
   },
   create: function() {
-    this.state.start('MainMenu');
+    //this.state.start('MainMenu');
+    this.loadingTextNode.text = "Starting multiplayer...";
+    PhaserMMORPG.eurecaClientSetup();
   },
-  
+  update: function () {
+    if (PhaserMMORPG.MultiplayerServerReady) {
+        this.state.start('MainMenu');    
+    } 
+
+  },
 
 
   onFileCompleteCallback: function (percentLoaded, assetName) {
