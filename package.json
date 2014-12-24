@@ -2,7 +2,7 @@
   "name": "phaser-mmorpg",
   "version": "0.0.0",
   "description": "A 2d tile-based world built with Phaser framework. Eventually intended to be made multiplayer",
-  "main": "index.html",
+  "main": "sever.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,5 +17,10 @@
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/arcanous/phaser-mmorpg/issues"
+  },
+  "dependencies": {
+    "express": "~4.10.6",
+    "engine.io": "~1.4.3",
+    "eureca.io": "~0.6.2"
   }
 }
