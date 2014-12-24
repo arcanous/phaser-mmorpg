@@ -9,7 +9,7 @@ PhaserMMORPG.Game.prototype = {
 
   },
   create: function() {
-    
+    that = this;
     this.map = this.game.add.tilemap(this.levelName);
 
     //the first parameter is the tileset name as specified in Tiled, the second is the key to the asset
@@ -51,7 +51,10 @@ PhaserMMORPG.Game.prototype = {
     //move player with cursor keys
     this.cursors = this.game.input.keyboard.createCursorKeys();
     this.escapeKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
-
+	//listen to key releases
+	this.game.input.keyboard.addCallbacks(null, null, this.onKeyUpCallback);
+	
+	
   },
   createItems: function() {
     //create items
@@ -118,17 +121,24 @@ PhaserMMORPG.Game.prototype = {
     }
     else if(this.cursors.right.isDown) {
       this.player.walkRight();
-    } else {
-      this.player.stopAnimations();
-
-      
-    }
-
+    } 
 
     if (this.escapeKey.isDown) {
         //this.state.start('MainMenu');
     }
 
+  },
+  
+  onKeyUpCallback: function (event) {
+	var keyCode = event.which;
+	
+	if (keyCode === Phaser.Keyboard.UP ||
+		keyCode === Phaser.Keyboard.DOWN ||
+		keyCode === Phaser.Keyboard.LEFT ||
+		keyCode === Phaser.Keyboard.RIGHT) {
+		that.player.stopAnimations();
+	}
+	
   },
   collect: function(player, collectable) {
     console.log('yummy!');
