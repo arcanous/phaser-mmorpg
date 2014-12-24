@@ -119,7 +119,7 @@ PhaserMMORPG.Game.prototype = {
     else if(this.cursors.right.isDown) {
       this.player.walkRight();
     } else {
-      //this.player.animations.stop();
+      this.player.player.animations.stop();
     }
 
 

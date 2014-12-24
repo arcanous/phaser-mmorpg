@@ -27,7 +27,7 @@ PhaserMMORPG.MainMenu.prototype = {
   },
   update: function() {
     if(this.game.input.activePointer.justPressed()) {
-      this.game.state.start('Game', true, false, 'desert');
+      this.game.state.start('Game', true, false, 'uno');
       //this.menuMusic.stop();
     }
   }

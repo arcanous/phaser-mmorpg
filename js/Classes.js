@@ -56,20 +56,46 @@ PhaserMMORPG.Avatar = function(game, name, initialX, initialY) {
 
 PhaserMMORPG.Avatar.prototype.walkUp = function () {
   this.player.body.velocity.y -= PhaserMMORPG.settings.player.walkSpeed;
-  this.player.play('up');  
+  this.player.play('up');
+  this.update();
 }
 
 PhaserMMORPG.Avatar.prototype.walkDown = function () {
   this.player.body.velocity.y += PhaserMMORPG.settings.player.walkSpeed;
   this.player.play('down');  
+  this.update();
 }
 
 PhaserMMORPG.Avatar.prototype.walkLeft = function () {
   this.player.body.velocity.x -= PhaserMMORPG.settings.player.walkSpeed;
   this.player.play('left');  
+  this.update();
 }
 
 PhaserMMORPG.Avatar.prototype.walkRight = function () {
   this.player.body.velocity.x += PhaserMMORPG.settings.player.walkSpeed;
   this.player.play('right');  
+  this.update();
+}
+
+PhaserMMORPG.Avatar.prototype.setX = function (x) {
+  this.player.x = x;
+}
+
+PhaserMMORPG.Avatar.prototype.setY = function (y) {
+  this.player.y = y;
+}
+
+PhaserMMORPG.Avatar.prototype.update = function () {
+  var keys = {
+      x: this.player.position.x,
+      y: this.player.position.y
+  };
+
+  //console.log('updating', keys);
+  PhaserMMORPG.eurecaServer.handleKeys(keys);
+}
+
+PhaserMMORPG.Avatar.prototype.kill = function () {
+  this.player.kill();
 }

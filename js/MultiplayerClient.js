@@ -2,7 +2,7 @@ var PhaserMMORPG = PhaserMMORPG || {};
 
 
 PhaserMMORPG.MultiplayerServerReady = false;
-PhaserMMORPG.playerList = [];
+PhaserMMORPG.playerList = PhaserMMORPG.playerList || {};
 PhaserMMORPG.MyMyltiplayerId = 0;
 
 //this function will handle client communication with the server
@@ -39,17 +39,18 @@ PhaserMMORPG.eurecaClientSetup = function() {
 		
 		if (id == PhaserMMORPG.MyMyltiplayerId) return; //this is me
 		
-		console.log('Spawning another player');
-		var tnk = new PhaserMMORPG.Avatar(PhaserMMORPG.game, 'Player' + id);
+		//console.log('Spawning another player');
+		var tnk = new PhaserMMORPG.Avatar(PhaserMMORPG.game, 'Player' + id, x, y);
 		PhaserMMORPG.playerList[id] = tnk;
 	}
 	
 	eurecaClient.exports.updateState = function(id, state)
 	{
 		if (PhaserMMORPG.playerList[id])  {
+
 			//PhaserMMORPG.playerList[id].cursor = state;
-			PhaserMMORPG.playerList[id].tank.x = state.x;
-			PhaserMMORPG.playerList[id].tank.y = state.y;
+			PhaserMMORPG.playerList[id].setX(state.x);
+			PhaserMMORPG.playerList[id].setY(state.y);
 			//PhaserMMORPG.playerList[id].tank.angle = state.angle;
 			//PhaserMMORPG.playerList[id].turret.rotation = state.rot;
 			//PhaserMMORPG.playerList[id].update();
