@@ -30,7 +30,7 @@ eurecaServer.onConnect(function (conn) {
     var remote = eurecaServer.getClient(conn.id);    
 	
 	//register the client
-	clients[conn.id] = {id:conn.id, remote:remote}
+	clients[conn.id] = {id:conn.id, remote:remote, ip: conn.remoteAddress}
 	
 	//here we call setId (defined in the client side)
 	remote.setId(conn.id);	
@@ -78,11 +78,13 @@ eurecaServer.exports.spawnOtherPlayers = function()
 		var remote = clients[c].remote;
 		for (var cc in clients)
 		{		
+			
 			//send latest known position
 			var x = clients[cc].laststate ? clients[cc].laststate.x:  0;
 			var y = clients[cc].laststate ? clients[cc].laststate.y:  0;
+			var color = clients[cc].laststate ? clients[cc].laststate.playerColor:  null;
 
-			remote.spawnAnotherPlayer(clients[cc].id, x, y);		
+			remote.spawnAnotherPlayer(clients[cc].id, x, y, color, clients[cc].remoteAddress);		
 		}
 	}
 }

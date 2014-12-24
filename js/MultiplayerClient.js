@@ -34,14 +34,14 @@ PhaserMMORPG.eurecaClientSetup = function() {
 		}
 	}	
 	
-	eurecaClient.exports.spawnAnotherPlayer = function(id, x, y)
+	eurecaClient.exports.spawnAnotherPlayer = function(id, x, y, color, ip)
 	{
 		
 		if (id == PhaserMMORPG.MyMyltiplayerId) return; //this is me
 		
-		//console.log('Spawning another player');
-		var tnk = new PhaserMMORPG.Avatar(PhaserMMORPG.game, 'Player' + id, x, y);
-		PhaserMMORPG.playerList[id] = tnk;
+		console.log('Spawning another player with name ' + ip);
+		var plr = new PhaserMMORPG.Avatar(PhaserMMORPG.game, ip, x, y, color);
+		PhaserMMORPG.playerList[id] = plr;
 	}
 	
 	eurecaClient.exports.updateState = function(id, state)
@@ -58,9 +58,10 @@ PhaserMMORPG.eurecaClientSetup = function() {
 				PhaserMMORPG.playerList[id].stopAnimations();
 			}
 
-			//PhaserMMORPG.playerList[id].tank.angle = state.angle;
-			//PhaserMMORPG.playerList[id].turret.rotation = state.rot;
-			//PhaserMMORPG.playerList[id].update();
+			if (PhaserMMORPG.playerList[id] !== state.playerColor) {
+				PhaserMMORPG.playerList[id].setPlayerColor(state.playerColor);
+			}
+
 		}
 	}
 }

@@ -10,20 +10,18 @@ PhaserMMORPG.settings = {
 
 
 
-PhaserMMORPG.Avatar = function(game, name, initialX, initialY) {
+PhaserMMORPG.Avatar = function(game, name, initialX, initialY, color) {
   
   name = name || 'Player name';
   initialX = initialX || 84;
   initialY = initialY || 48;
 
-//this.avatar = game.add.group();
+  //this.avatar = game.add.group();
 
   //  Player
   this.player = game.add.sprite(initialX, initialY, 'playerDude', 1);
   
-  var tints = [0xf000f0, 0xff00ff, 0x00ffff, 0x00ff00, 0xff5500, 0x0055ff, 0x55ff00];
-  
-  this.player.tint = tints[Math.floor(Math.random() * tints.length)];
+  this.setPlayerColor('random');
   
   this.player.anchor.set(0.5, 0.5);
 
@@ -53,6 +51,32 @@ PhaserMMORPG.Avatar = function(game, name, initialX, initialY) {
   return this;
 
 }
+
+
+PhaserMMORPG.Avatar.prototype.setPlayerColor = function (tintName) {
+  var tints = {
+      'pink' : 0xf000f0, 
+      'turquoise' : 0x00ffff, 
+      'green' : 0x00ff00, 
+      'orange' : 0xff7e3d, 
+      'blue' : 0x0000ff 
+    }, tintsArray = ['pink','turquoise','green','orange','blue'];  
+
+
+    if (tints[tintName]) {
+      this.player.tint = tints[tintName];
+
+    } else if (tintName === 'random') {
+      tintName = tintsArray[Math.floor(Math.random() * tintsArray.length)];
+      this.player.tint = tints[tintName];
+    } else {
+      return;      
+    }
+
+    this.playerColor = tintName;
+}
+
+
 
 PhaserMMORPG.Avatar.prototype.walkUp = function () {
   this.player.body.velocity.y -= PhaserMMORPG.settings.player.walkSpeed;
@@ -109,7 +133,8 @@ PhaserMMORPG.Avatar.prototype.update = function (animationPlaying) {
   var keys = {
       x: this.player.position.x,
       y: this.player.position.y,
-      animationPlaying : animationPlaying || null
+      animationPlaying : animationPlaying || null,
+      playerColor : this.playerColor || null
   };
 
   PhaserMMORPG.eurecaServer.handleKeys(keys);
