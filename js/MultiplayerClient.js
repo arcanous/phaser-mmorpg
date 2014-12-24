@@ -48,9 +48,18 @@ PhaserMMORPG.eurecaClientSetup = function() {
 	{
 		if (PhaserMMORPG.playerList[id])  {
 
+			console.log('updating player ' + id + ' with anim ' + state.animationPlaying);
+
 			//PhaserMMORPG.playerList[id].cursor = state;
 			PhaserMMORPG.playerList[id].setX(state.x);
 			PhaserMMORPG.playerList[id].setY(state.y);
+
+			if (state.animationPlaying) {
+				PhaserMMORPG.playerList[id].playAnimation(state.animationPlaying);
+			} else {
+				PhaserMMORPG.playerList[id].stopAnimations();
+			}
+
 			//PhaserMMORPG.playerList[id].tank.angle = state.angle;
 			//PhaserMMORPG.playerList[id].turret.rotation = state.rot;
 			//PhaserMMORPG.playerList[id].update();

@@ -104,8 +104,8 @@ PhaserMMORPG.Game.prototype = {
     this.game.physics.arcade.overlap(this.player.player, this.doors, this.enterDoor, null, this);
 
     //player movement
-    this.player.player.body.velocity.y = 0;
-    this.player.player.body.velocity.x = 0;
+    
+    this.player.stopVelocity();
 
     if(this.cursors.up.isDown) {
       this.player.walkUp();
@@ -119,7 +119,9 @@ PhaserMMORPG.Game.prototype = {
     else if(this.cursors.right.isDown) {
       this.player.walkRight();
     } else {
-      this.player.player.animations.stop();
+      this.player.stopAnimations();
+
+      
     }
 
 

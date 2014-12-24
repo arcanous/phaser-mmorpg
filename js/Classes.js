@@ -3,7 +3,7 @@ var PhaserMMORPG = PhaserMMORPG || {};
 
 PhaserMMORPG.settings = {
     player : {
-        walkSpeed : 500
+        walkSpeed : 150
     }
 
 };
@@ -56,26 +56,39 @@ PhaserMMORPG.Avatar = function(game, name, initialX, initialY) {
 
 PhaserMMORPG.Avatar.prototype.walkUp = function () {
   this.player.body.velocity.y -= PhaserMMORPG.settings.player.walkSpeed;
-  this.player.play('up');
-  this.update();
+  this.playAnimation('up');
+  this.update('up');
 }
 
 PhaserMMORPG.Avatar.prototype.walkDown = function () {
   this.player.body.velocity.y += PhaserMMORPG.settings.player.walkSpeed;
-  this.player.play('down');  
-  this.update();
+  this.playAnimation('down');  
+  this.update('down');
 }
 
 PhaserMMORPG.Avatar.prototype.walkLeft = function () {
   this.player.body.velocity.x -= PhaserMMORPG.settings.player.walkSpeed;
-  this.player.play('left');  
-  this.update();
+  this.playAnimation('left');  
+  this.update('left');
 }
 
 PhaserMMORPG.Avatar.prototype.walkRight = function () {
   this.player.body.velocity.x += PhaserMMORPG.settings.player.walkSpeed;
-  this.player.play('right');  
-  this.update();
+  this.playAnimation('right');
+  this.update('right');
+}
+
+PhaserMMORPG.Avatar.prototype.stopVelocity = function () {
+    this.player.body.velocity.y = 0;
+    this.player.body.velocity.x = 0;
+}
+
+PhaserMMORPG.Avatar.prototype.playAnimation = function (animationName) {
+  this.player.play(animationName);  
+}
+
+PhaserMMORPG.Avatar.prototype.stopAnimations = function () {
+  this.player.animations.stop();
 }
 
 PhaserMMORPG.Avatar.prototype.setX = function (x) {
@@ -86,13 +99,13 @@ PhaserMMORPG.Avatar.prototype.setY = function (y) {
   this.player.y = y;
 }
 
-PhaserMMORPG.Avatar.prototype.update = function () {
+PhaserMMORPG.Avatar.prototype.update = function (animationPlaying) {
   var keys = {
       x: this.player.position.x,
-      y: this.player.position.y
+      y: this.player.position.y,
+      animationPlaying : animationPlaying || null
   };
 
-  //console.log('updating', keys);
   PhaserMMORPG.eurecaServer.handleKeys(keys);
 }
 
