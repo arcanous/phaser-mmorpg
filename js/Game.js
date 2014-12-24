@@ -33,7 +33,11 @@ PhaserMMORPG.Game.prototype = {
     //this.player = this.game.add.sprite(result[0].x, result[0].y, 'player');
     
 
-    this.player = new PhaserMMORPG.Avatar(this.game, 'Player1');
+    this.player = new PhaserMMORPG.Avatar(this.game, 'You');
+
+    //spawn other players
+    PhaserMMORPG.eurecaServer.spawnOtherPlayers();
+
 
     //this.player.body.collideWorldBounds = true;
     //console.log(this.player);
@@ -42,7 +46,7 @@ PhaserMMORPG.Game.prototype = {
 
 
     //the camera will follow the player in the world
-    this.game.camera.follow(this.player);
+    this.game.camera.follow(this.player.player);
 
     //move player with cursor keys
     this.cursors = this.game.input.keyboard.createCursorKeys();
@@ -95,31 +99,27 @@ PhaserMMORPG.Game.prototype = {
   },
   update: function() {
     //collision
-    this.game.physics.arcade.collide(this.player, this.blockedLayer);
-    this.game.physics.arcade.overlap(this.player, this.items, this.collect, null, this);
-    this.game.physics.arcade.overlap(this.player, this.doors, this.enterDoor, null, this);
+    this.game.physics.arcade.collide(this.player.player, this.blockedLayer);
+    this.game.physics.arcade.overlap(this.player.player, this.items, this.collect, null, this);
+    this.game.physics.arcade.overlap(this.player.player, this.doors, this.enterDoor, null, this);
 
     //player movement
-    this.player.body.velocity.y = 0;
-    this.player.body.velocity.x = 0;
+    this.player.player.body.velocity.y = 0;
+    this.player.player.body.velocity.x = 0;
 
     if(this.cursors.up.isDown) {
-      this.player.body.velocity.y -= 500;
-      this.player.play('up');
+      this.player.walkUp();
     }
     else if(this.cursors.down.isDown) {
-      this.player.body.velocity.y += 500;
-      this.player.play('down');
+      this.player.walkDown();
     }
     if(this.cursors.left.isDown) {
-      this.player.body.velocity.x -= 500;
-      this.player.play('left');
+      this.player.walkLeft();
     }
     else if(this.cursors.right.isDown) {
-      this.player.body.velocity.x += 500;
-      this.player.play('right');
+      this.player.walkRight();
     } else {
-      this.player.animations.stop();
+      //this.player.animations.stop();
     }
 
 

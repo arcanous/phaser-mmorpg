@@ -1,5 +1,15 @@
 var PhaserMMORPG = PhaserMMORPG || {};
 
+
+PhaserMMORPG.settings = {
+    player : {
+        walkSpeed : 500
+    }
+
+};
+
+
+
 PhaserMMORPG.Avatar = function(game, name, initialX, initialY) {
   
   name = name || 'Player name';
@@ -40,6 +50,26 @@ PhaserMMORPG.Avatar = function(game, name, initialX, initialY) {
   
   this.player.addChild(this.playerName);
   
-  return this.player;
+  return this;
 
+}
+
+PhaserMMORPG.Avatar.prototype.walkUp = function () {
+  this.player.body.velocity.y -= PhaserMMORPG.settings.player.walkSpeed;
+  this.player.play('up');  
+}
+
+PhaserMMORPG.Avatar.prototype.walkDown = function () {
+  this.player.body.velocity.y += PhaserMMORPG.settings.player.walkSpeed;
+  this.player.play('down');  
+}
+
+PhaserMMORPG.Avatar.prototype.walkLeft = function () {
+  this.player.body.velocity.x -= PhaserMMORPG.settings.player.walkSpeed;
+  this.player.play('left');  
+}
+
+PhaserMMORPG.Avatar.prototype.walkRight = function () {
+  this.player.body.velocity.x += PhaserMMORPG.settings.player.walkSpeed;
+  this.player.play('right');  
 }

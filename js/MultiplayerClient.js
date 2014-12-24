@@ -2,6 +2,8 @@ var PhaserMMORPG = PhaserMMORPG || {};
 
 
 PhaserMMORPG.MultiplayerServerReady = false;
+PhaserMMORPG.playerList = [];
+PhaserMMORPG.MyMyltiplayerId = 0;
 
 //this function will handle client communication with the server
 PhaserMMORPG.eurecaClientSetup = function() {
@@ -18,7 +20,7 @@ PhaserMMORPG.eurecaClientSetup = function() {
 	eurecaClient.exports.setId = function(id) 
 	{
 		//create() is moved here to make sure nothing is created before uniq id assignation
-		myId = id;
+		PhaserMMORPG.MyMyltiplayerId = id;
 		//create();
 		PhaserMMORPG.eurecaServer.handshake();
 		PhaserMMORPG.MultiplayerServerReady = true;
@@ -26,31 +28,31 @@ PhaserMMORPG.eurecaClientSetup = function() {
 	
 	eurecaClient.exports.kill = function(id)
 	{	
-		if (tanksList[id]) {
-			tanksList[id].kill();
-			console.log('killing ', id, tanksList[id]);
+		if (PhaserMMORPG.playerList[id]) {
+			PhaserMMORPG.playerList[id].kill();
+			console.log('killing ', id, PhaserMMORPG.playerList[id]);
 		}
 	}	
 	
-	eurecaClient.exports.spawnEnemy = function(i, x, y)
+	eurecaClient.exports.spawnAnotherPlayer = function(id, x, y)
 	{
 		
-		if (i == myId) return; //this is me
+		if (id == PhaserMMORPG.MyMyltiplayerId) return; //this is me
 		
-		console.log('SPAWN');
-		var tnk = new Tank(i, game, tank);
-		tanksList[i] = tnk;
+		console.log('Spawning another player');
+		var tnk = new PhaserMMORPG.Avatar(PhaserMMORPG.game, 'Player' + id);
+		PhaserMMORPG.playerList[id] = tnk;
 	}
 	
 	eurecaClient.exports.updateState = function(id, state)
 	{
-		if (tanksList[id])  {
-			tanksList[id].cursor = state;
-			tanksList[id].tank.x = state.x;
-			tanksList[id].tank.y = state.y;
-			tanksList[id].tank.angle = state.angle;
-			tanksList[id].turret.rotation = state.rot;
-			tanksList[id].update();
+		if (PhaserMMORPG.playerList[id])  {
+			//PhaserMMORPG.playerList[id].cursor = state;
+			PhaserMMORPG.playerList[id].tank.x = state.x;
+			PhaserMMORPG.playerList[id].tank.y = state.y;
+			//PhaserMMORPG.playerList[id].tank.angle = state.angle;
+			//PhaserMMORPG.playerList[id].turret.rotation = state.rot;
+			//PhaserMMORPG.playerList[id].update();
 		}
 	}
 }
