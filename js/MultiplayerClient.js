@@ -46,9 +46,7 @@ PhaserMMORPG.eurecaClientSetup = function() {
 	
 	eurecaClient.exports.updateState = function(id, state)
 	{
-		if (PhaserMMORPG.playerList[id])  {
-
-			console.log('updating player ' + id + ' with anim ' + state.animationPlaying);
+		if (PhaserMMORPG.playerList[id] && PhaserMMORPG.MyMyltiplayerId  !== id)  {
 
 			//PhaserMMORPG.playerList[id].cursor = state;
 			PhaserMMORPG.playerList[id].setX(state.x);

@@ -136,7 +136,7 @@ PhaserMMORPG.Game.prototype = {
 		keyCode === Phaser.Keyboard.DOWN ||
 		keyCode === Phaser.Keyboard.LEFT ||
 		keyCode === Phaser.Keyboard.RIGHT) {
-		that.player.stopAnimations();
+		that.player.stopMovement();
 	}
 	
   },

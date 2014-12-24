@@ -89,6 +89,10 @@ PhaserMMORPG.Avatar.prototype.playAnimation = function (animationName) {
 
 PhaserMMORPG.Avatar.prototype.stopAnimations = function () {
   this.player.animations.stop();
+}
+
+PhaserMMORPG.Avatar.prototype.stopMovement = function () {
+  this.stopAnimations();
   this.update();
 }
 
@@ -101,6 +105,7 @@ PhaserMMORPG.Avatar.prototype.setY = function (y) {
 }
 
 PhaserMMORPG.Avatar.prototype.update = function (animationPlaying) {
+
   var keys = {
       x: this.player.position.x,
       y: this.player.position.y,
