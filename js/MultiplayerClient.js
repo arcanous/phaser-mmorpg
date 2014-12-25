@@ -19,9 +19,7 @@ PhaserMMORPG.eurecaClientSetup = function() {
 	
 	eurecaClient.exports.setId = function(id) 
 	{
-		//create() is moved here to make sure nothing is created before uniq id assignation
 		PhaserMMORPG.MyMyltiplayerId = id;
-		//create();
 		PhaserMMORPG.eurecaServer.handshake();
 		PhaserMMORPG.MultiplayerServerReady = true;
 	}	

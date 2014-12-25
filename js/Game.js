@@ -20,7 +20,7 @@ PhaserMMORPG.Game.prototype = {
     this.blockedLayer = this.map.createLayer('blockedLayer');
 
     //collision on blockedLayer
-    this.map.setCollisionBetween(1, 2000, true, 'blockedLayer');
+    this.map.setCollisionBetween(1, 100, true, 'blockedLayer');
 
     //resizes the game world to match the layer dimensions
     this.backgroundlayer.resizeWorld();
@@ -71,16 +71,6 @@ PhaserMMORPG.Game.prototype = {
       this.createFromTiledObject(element, this.items);
     }, this);
   },
-  createDoors: function() {
-    //create doors
-    this.doors = this.game.add.group();
-    this.doors.enableBody = true;
-    result = this.findObjectsByType('door', this.map, 'objectsLayer');
-
-    result.forEach(function(element){
-      this.createFromTiledObject(element, this.doors);
-    }, this);
-  },
 
   //find objects in a Tiled layer that containt a property called "type" equal to a certain value
   findObjectsByType: function(type, map, layer) {
@@ -111,7 +101,6 @@ PhaserMMORPG.Game.prototype = {
     //collision
     this.game.physics.arcade.collide(this.player.player, this.blockedLayer);
     this.game.physics.arcade.overlap(this.player.player, this.items, this.collect, null, this);
-    this.game.physics.arcade.overlap(this.player.player, this.doors, this.enterDoor, null, this);
 
     //player movement
     
@@ -152,8 +141,5 @@ PhaserMMORPG.Game.prototype = {
     this.coinPickupSound.play('',0,1,false);
     //remove sprite
     collectable.destroy();
-  },
-  enterDoor: function(player, door) {
-    console.log('entering door that will take you to '+door.targetTilemap+' on x:'+door.targetX+' and y:'+door.targetY);
   },
 };
