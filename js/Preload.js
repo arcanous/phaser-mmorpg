@@ -32,10 +32,15 @@ PhaserMMORPG.Preload.prototype = {
     this.load.image('bluecup', '/assets/images/bluecup.png');
     this.load.image('browndoor', '/assets/images/browndoor.png');
 
+    this.load.image('goldpile', '/assets/images/goldpile.png');
+
+
+
     this.load.spritesheet('playerDude', '/assets/images/dude.png', 32, 48);
 
 
     this.load.audio('spaceTheme', '/assets/audio/space-theme.mp3');
+    this.load.audio('coins', '/assets/audio/coins.wav');
 
     
     this.game.load.onFileComplete.add(this.onFileCompleteCallback, this);

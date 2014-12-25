@@ -26,9 +26,11 @@ PhaserMMORPG.Game.prototype = {
     this.backgroundlayer.resizeWorld();
 
     this.createItems();
-    this.createDoors();    
+    //this.createDoors();    
 
-    //create player
+    this.coinPickupSound = this.game.add.audio('coins',1,true);
+
+    //find player start position
     //var result = this.findObjectsByType('playerStart', this.map, 'objectsLayer')
     //this.player = this.game.add.sprite(result[0].x, result[0].y, 'player');
     
@@ -53,10 +55,11 @@ PhaserMMORPG.Game.prototype = {
     //move player with cursor keys
     this.cursors = this.game.input.keyboard.createCursorKeys();
     this.escapeKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
-	//listen to key releases
-	this.game.input.keyboard.addCallbacks(null, null, this.onKeyUpCallback);
-	
-	
+     
+    //listen to key releases
+    this.game.input.keyboard.addCallbacks(null, null, this.onKeyUpCallback);
+  
+  
   },
   createItems: function() {
     //create items
@@ -87,7 +90,9 @@ PhaserMMORPG.Game.prototype = {
         //Phaser uses top left, Tiled bottom left so we have to adjust
         //also keep in mind that the cup images are a bit smaller than the tile which is 16x16
         //so they might not be placed in the exact position as in Tiled
-        element.y -= map.tileHeight;
+        element.y -= map.tileHeight - 15;
+        element.x -= 15;
+        
         result.push(element);
       }      
     });
@@ -132,19 +137,19 @@ PhaserMMORPG.Game.prototype = {
   },
   
   onKeyUpCallback: function (event) {
-	var keyCode = event.which;
-	
-	if (keyCode === Phaser.Keyboard.UP ||
-		keyCode === Phaser.Keyboard.DOWN ||
-		keyCode === Phaser.Keyboard.LEFT ||
-		keyCode === Phaser.Keyboard.RIGHT) {
-		that.player.stopMovement();
-	}
-	
+  var keyCode = event.which;
+  
+  if (keyCode === Phaser.Keyboard.UP ||
+    keyCode === Phaser.Keyboard.DOWN ||
+    keyCode === Phaser.Keyboard.LEFT ||
+    keyCode === Phaser.Keyboard.RIGHT) {
+    that.player.stopMovement();
+  }
+  
   },
   collect: function(player, collectable) {
-    console.log('yummy!');
-
+    console.log('Yeey muney!');
+    this.coinPickupSound.play('',0,1,false);
     //remove sprite
     collectable.destroy();
   },
