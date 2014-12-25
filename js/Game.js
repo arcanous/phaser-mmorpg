@@ -35,6 +35,8 @@ PhaserMMORPG.Game.prototype = {
 
     this.player = new PhaserMMORPG.Avatar(this.game, 'You');
 
+    PhaserMMORPG.myAvatar = this.player;
+
     //spawn other players
     PhaserMMORPG.eurecaServer.spawnOtherPlayers();
 

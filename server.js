@@ -84,7 +84,7 @@ eurecaServer.exports.spawnOtherPlayers = function()
 			var y = clients[cc].laststate ? clients[cc].laststate.y:  0;
 			var color = clients[cc].laststate ? clients[cc].laststate.playerColor:  null;
 
-			remote.spawnAnotherPlayer(clients[cc].id, x, y, color, clients[cc].remoteAddress);		
+			remote.spawnAnotherPlayer(clients[cc].id, x, y, color, clients[cc].ip.ip);		
 		}
 	}
 }

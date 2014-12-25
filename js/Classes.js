@@ -12,7 +12,7 @@ PhaserMMORPG.settings = {
 
 PhaserMMORPG.Avatar = function(game, name, initialX, initialY, color) {
   
-  name = name || 'Player name';
+  this.name = name || 'Player name';
   initialX = initialX || 84;
   initialY = initialY || 48;
 
@@ -34,7 +34,7 @@ PhaserMMORPG.Avatar = function(game, name, initialX, initialY, color) {
 
 
   //player name text
-  this.playerName = game.add.text(0, -30, name, { font: '10px Arial', fill: '#444444', align: 'center' }); 
+  this.playerName = game.add.text(0, -30, this.name , { font: '10px Arial', fill: '#444444', align: 'center' }); 
   this.playerName.anchor.setTo(0.5);
   
   
@@ -58,9 +58,8 @@ PhaserMMORPG.Avatar.prototype.setPlayerColor = function (tintName) {
       'pink' : 0xf000f0, 
       'turquoise' : 0x00ffff, 
       'green' : 0x00ff00, 
-      'orange' : 0xff7e3d, 
-      'blue' : 0x0000ff 
-    }, tintsArray = ['pink','turquoise','green','orange','blue'];  
+      'orange' : 0xff7e3d,
+    }, tintsArray = ['pink','turquoise','green','orange'];  
 
 
     if (tints[tintName]) {
@@ -128,13 +127,19 @@ PhaserMMORPG.Avatar.prototype.setY = function (y) {
   this.player.y = y;
 }
 
+PhaserMMORPG.Avatar.prototype.setName = function (name) {
+  this.name = name;
+  this.playerName.text = name;
+}
+
 PhaserMMORPG.Avatar.prototype.update = function (animationPlaying) {
 
   var keys = {
       x: this.player.position.x,
       y: this.player.position.y,
       animationPlaying : animationPlaying || null,
-      playerColor : this.playerColor || null
+      playerColor : this.playerColor || null//,
+      //playerName : this.name || 'Player name'
   };
 
   PhaserMMORPG.eurecaServer.handleKeys(keys);
