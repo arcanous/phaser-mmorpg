@@ -3,7 +3,13 @@ var PhaserMMORPG = PhaserMMORPG || {};
 
 PhaserMMORPG.settings = {
     player : {
-        walkSpeed : 150
+        walkSpeed : 150,
+        runSpeed : 300
+    },
+
+
+    keyboard : {
+        runKey : Phaser.Keyboard.SHIFT      
     }
 
 };
@@ -98,6 +104,30 @@ PhaserMMORPG.Avatar.prototype.walkLeft = function () {
 PhaserMMORPG.Avatar.prototype.walkRight = function () {
   this.player.body.velocity.x += PhaserMMORPG.settings.player.walkSpeed;
   this.playAnimation('right');
+  this.update('right');
+}
+
+PhaserMMORPG.Avatar.prototype.runUp = function () {
+  this.player.body.velocity.y -= PhaserMMORPG.settings.player.runSpeed;
+  this.playAnimation('up', 20);
+  this.update('up');
+}
+
+PhaserMMORPG.Avatar.prototype.runDown = function () {
+  this.player.body.velocity.y += PhaserMMORPG.settings.player.runSpeed;
+  this.playAnimation('down', 20);  
+  this.update('down');
+}
+
+PhaserMMORPG.Avatar.prototype.runLeft = function () {
+  this.player.body.velocity.x -= PhaserMMORPG.settings.player.runSpeed;
+  this.playAnimation('left', 20);  
+  this.update('left');
+}
+
+PhaserMMORPG.Avatar.prototype.runRight = function () {
+  this.player.body.velocity.x += PhaserMMORPG.settings.player.runSpeed;
+  this.playAnimation('right', 20);
   this.update('right');
 }
 

@@ -52,9 +52,10 @@ PhaserMMORPG.Game.prototype = {
     //the camera will follow the player in the world
     this.game.camera.follow(this.player.player);
 
-    //move player with cursor keys
+    //set up cursor keys
     this.cursors = this.game.input.keyboard.createCursorKeys();
-    this.escapeKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
+    this.cursors.runKey = this.game.input.keyboard.addKey(PhaserMMORPG.settings.keyboard.runKey);
+
      
     //listen to key releases
     this.game.input.keyboard.addCallbacks(null, null, this.onKeyUpCallback);
@@ -107,21 +108,17 @@ PhaserMMORPG.Game.prototype = {
     this.player.stopVelocity();
 
     if(this.cursors.up.isDown) {
-      this.player.walkUp();
+      this.cursors.runKey.isDown? this.player.runUp() : this.player.walkUp();
+    } else if (this.cursors.down.isDown) {
+      this.cursors.runKey.isDown? this.player.runDown() : this.player.walkDown();
     }
-    else if(this.cursors.down.isDown) {
-      this.player.walkDown();
-    }
-    if(this.cursors.left.isDown) {
-      this.player.walkLeft();
-    }
-    else if(this.cursors.right.isDown) {
-      this.player.walkRight();
+    
+    if (this.cursors.left.isDown) {
+      this.cursors.runKey.isDown? this.player.runLeft() : this.player.walkLeft();
+    } else if(this.cursors.right.isDown) {
+      this.cursors.runKey.isDown? this.player.runRight() : this.player.walkRight();
     } 
 
-    if (this.escapeKey.isDown) {
-        //this.state.start('MainMenu');
-    }
 
   },
   
