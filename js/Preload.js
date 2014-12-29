@@ -23,9 +23,11 @@ PhaserMMORPG.Preload.prototype = {
     this.load.tilemap('desert', '/assets/tilemaps/desert/desert.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.tilemap('desertmaze', '/assets/tilemaps/desert/desertmaze.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.tilemap('uno', '/assets/tilemaps/desert/uno.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.tilemap('duo', '/assets/tilemaps/desert2x/duo.json', null, Phaser.Tilemap.TILED_JSON);
     
 
-    this.load.image('gameTiles', '/assets/tilemaps/desert/tmw_desert_spacing.png');
+    //this.load.image('gameTiles', '/assets/tilemaps/desert/tmw_desert_spacing.png');
+    this.load.image('gameTiles', '/assets/tilemaps/desert2x/tmw_desert_spacing2.png');
 
     this.load.image('space', '/assets/images/space.png');
     this.load.image('greencup', '/assets/images/greencup.png');
