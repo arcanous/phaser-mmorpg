@@ -51,7 +51,18 @@ module.exports = function(grunt) {
                 src: 'build/PhaserMMORPG.concat.js',
                 dest: 'build/PhaserMMORPG.min.js'
             }
-        },       
+        },   
+
+        jsdoc : {
+            dist : {
+                src: ['js/**/*.js', '!js/lib/**/*.js'], 
+                options: {
+                    destination: 'doc',
+                    template : "node_modules/grunt-jsdoc/node_modules/ink-docstrap/template",
+                    configure : "node_modules/grunt-jsdoc/node_modules/ink-docstrap/template/jsdoc.conf.json"
+                }
+            }
+        }    
 
     });
 
@@ -59,6 +70,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-jsdoc');
 
     // Tasks.
     grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
