@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>DocStrap Source: Classes.js</title>
+	<title>PhaserMMORPG Source: Classes.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -18,7 +18,7 @@
 <div class="container-fluid">
 	<div class="navbar navbar-fixed-top navbar-inverse">
 		<div class="navbar-inner">
-			<a class="brand" href="index.html">DocStrap</a>
+			<a class="brand" href="index.html">PhaserMMORPG</a>
 			<ul class="nav">
 				
 				<li class="dropdown">
@@ -82,17 +82,27 @@ PhaserMMORPG.settings = {
 * @param {integer} initialX - Initial x coordinates. Defaults to 84
 * @param {integer} initialY - Initial y coordinates. Defaults to 48
 * @param {string} color - Color denotifying sprite tint
+*
+* @return {PhaserMMORPG.Avatar} Itself
 */
-
 PhaserMMORPG.Avatar = function(game, name, initialX, initialY, color) {
-  
+
+
+  /**
+  * @name PhaserMMORPG.Avatar#name
+  * @property {string} name - the name associated with this avatar. Matches the text above head
+  * @default
+  */  
   this.name = name || 'Player name';
+
   initialX = initialX || 84;
+
   initialY = initialY || 48;
 
-  //this.avatar = game.add.group();
-
-  //  Player
+  /**
+  * @name PhaserMMORPG.Avatar#mainSprite
+  * @property {Phaser.Sprite} mainSprite - the name that will be visible above 
+  */  
   this.mainSprite = game.add.sprite(initialX, initialY, 'playerDude', 1);
   
   this.setColor('random');
@@ -107,7 +117,10 @@ PhaserMMORPG.Avatar = function(game, name, initialX, initialY, color) {
   game.physics.enable(this.mainSprite, Phaser.Physics.ARCADE);
 
 
-  //player name text
+  /**
+  * @name PhaserMMORPG.Avatar#avatarName
+  * @property {Phaser.Text} avatarName - the name that will be visible above 
+  */  
   this.avatarName = game.add.text(0, -30, this.name , { font: '10px Arial', fill: '#444444', align: 'center' }); 
   this.avatarName.anchor.setTo(0.5);
   
@@ -123,7 +136,12 @@ PhaserMMORPG.Avatar = function(game, name, initialX, initialY, color) {
 
 }
 
-
+/**
+* Sets a tint on the avatar sprite from the available colors
+*
+* @method PhaserMMORPG.Avatar#setColor
+* @param {string} tintName - The tint to color the player avatar in. 
+*/
 PhaserMMORPG.Avatar.prototype.setColor = function (tintName) {
   var tints = {
       'pink' : 0xf000f0, 
@@ -146,7 +164,11 @@ PhaserMMORPG.Avatar.prototype.setColor = function (tintName) {
     this.mainSpriteColor = tintName;
 }
 
-
+/**
+* Walk upwards
+*
+* @method PhaserMMORPG.Avatar#walkUp
+*/
 PhaserMMORPG.Avatar.prototype.walkUp = function () {
   this.mainSprite.body.velocity.y -= PhaserMMORPG.settings.player.walkSpeed;
   this.playAnimation('up');
