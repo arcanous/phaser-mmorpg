@@ -57,7 +57,7 @@ PhaserMMORPG.eurecaClientSetup = function() {
 			}
 
 			if (PhaserMMORPG.playerList[id].playerColor !== state.playerColor) {
-				PhaserMMORPG.playerList[id].setPlayerColor(state.playerColor);
+				PhaserMMORPG.playerList[id].setColor(state.playerColor);
 			}
 
 			if (PhaserMMORPG.playerList[id].name !== state.playerName) {

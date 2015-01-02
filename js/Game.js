@@ -50,7 +50,7 @@ PhaserMMORPG.Game.prototype = {
 
 
     //the camera will follow the player in the world
-    this.game.camera.follow(this.player.player);
+    this.game.camera.follow(this.player.mainSprite);
 
     //set up cursor keys
     this.cursors = this.game.input.keyboard.createCursorKeys();
@@ -100,8 +100,8 @@ PhaserMMORPG.Game.prototype = {
   },
   update: function() {
     //collision
-    this.game.physics.arcade.collide(this.player.player, this.blockedLayer);
-    this.game.physics.arcade.overlap(this.player.player, this.items, this.collect, null, this);
+    this.game.physics.arcade.collide(this.player.mainSprite, this.blockedLayer);
+    this.game.physics.arcade.overlap(this.player.mainSprite, this.items, this.collect, null, this);
 
     //player movement
     
